@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit: {{ title }}
+{% endblock %}
+
+{% block body %}
+<h1>Edit the Entry</h1>
+<p>Edit your entry, then click Save to save your changes.</p>
+<form action="{% url 'encyclopedia:edit' %}" method="POST">
+    {% csrf_token %}
+    <b><label for="title">Entry:</label></b>
+    <input type="text" id="title" name="title" value="{{ title }}" readonly> .md<br>
+    <b><label for="content">Definition:</label></b> (Include the title of the entry 
+    in the definition)
+    <div class="form-outline w-50 mb-4">
+    <textarea class="form-control" id="content" name="new_content" 
+    rows="5">{{ content }}</textarea></div>
+    Click Save to save your changes and see the revised entry.<br><br>
+    <input type="submit" value="Save">
+</form>
+{% endblock %}

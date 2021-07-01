@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Entry: {{ title }}
+{% endblock %}
+
+{% block body %}
+<h1>Not Saved: {{ title }}</h1>
+<div>
+    This entry already exists.  You can read and edit it
+    by clicking <a href="wiki/{{ title }}">here</a>.
+</div>
+{% endblock %}

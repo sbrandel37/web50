@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New
+{% endblock %}
+
+{% block body %}
+    <h1>Add a New Entry</h1>
+    <p>Use Markdown to format the text for a new entry.</p>
+    <form action="{% url 'encyclopedia:new_entry' %}" method="POST">
+        {% csrf_token %}
+        <b><label for="new_title">Entry:</label></b>
+        <input type="text" id="new_title" name="new_title"> .md<br>
+        <b><label for="new_content">Definition:</label></b> (Include the title of the entry 
+        in the definition)<br>
+        <div class="form-outline w-50 mb-4">
+        <textarea class="form-control" id="new_content" name="new_content" rows="5"></textarea>
+        </div>
+        Click Save to save the entry or Reset
+        to clear the form.<br><br>
+        <input type="submit" value="Save"> <input type="reset" value="Reset">
+    </form>
+
+{% endblock %}

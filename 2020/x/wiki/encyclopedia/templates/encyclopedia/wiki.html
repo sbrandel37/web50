@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Wiki: {{ title }}
+{% endblock %}
+
+{% block body %}
+{% if text %}
+{{ text | safe }}
+<br>
+<form action="{% url 'encyclopedia:edit' %}" method="GET">
+    <input value="{{ title }}" name="title" type="hidden">
+    <input type="submit" value="Edit">
+</form>
+{% else %}
+    <h1>{{ title }}: No such entry.</h1>
+    <div>
+        To add an entry, <a href="{% url 'encyclopedia:new_entry' %}">click here</a>.
+    </div>
+{% endif %}
+{% endblock %}
